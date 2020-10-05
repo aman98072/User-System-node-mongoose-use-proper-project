@@ -1,0 +1,20 @@
+include ./layout.pug
+.container
+  h2 Edit Form  
+
+  if msg
+   <div class="alert alert-success"><strong>#{msg}</strong></div>
+  
+  form.form-horizontal(action='/dashboard/update' method='post')
+    input.form-control(type='hidden', name='userId', value= (data && data._id ? data._id : '') )
+    .form-group
+      label.control-label.col-sm-2(for='name') Name:
+      .col-sm-10
+        input#name.form-control(type='text', placeholder='Enter Name', name='name', value= (data && data.name ? data.name : '') )
+    .form-group
+      label.control-label.col-sm-2(for='email') Email:
+      .col-sm-10
+        input#email.form-control(type='text', placeholder='Enter email', name='email', value = (data && data.email ? data.email : '') )   
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        input.btn.btn-primary(type='submit', value='Update')

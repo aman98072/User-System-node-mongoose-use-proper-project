@@ -1,0 +1,18 @@
+include ./layout.pug
+.container
+  h2 Login Form 
+  form.form-horizontal(action='/checkAuth' method='post')     
+    if msg
+     <div class="alert alert-danger"><strong>#{msg}</strong></div>
+
+    .form-group
+      label.control-label.col-sm-2(for='email') Email:
+      .col-sm-10
+        input#email.form-control(type='text', placeholder='Enter email', name='email', value = (data && data.email ? data.email : '') )
+    .form-group
+      label.control-label.col-sm-2(for='pwd') Password:
+      .col-sm-10
+        input#pwd.form-control(type='password', placeholder='Enter password', name='password', value = (data && data.password ? data.password : '') )
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        input.btn.btn-primary(type='submit', value='Login')

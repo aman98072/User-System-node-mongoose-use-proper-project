@@ -1,0 +1,26 @@
+include ./layout.pug
+.container
+  h1 Users Details  
+  if flash_success_msg != ''
+   <div class="alert alert-success"><strong>#{flash_success_msg}</strong></div>    
+  if flash_error_msg != ''
+   <div class="alert alert-danger"><strong>#{flash_error_msg}</strong></div>    
+  table.table
+    thead
+      tr
+        th Name        
+        th Email
+        th Edit
+        th Delete
+    tbody
+      each val, index in data
+        tr
+         td #{val.name}         
+         td #{val.email}
+         td 
+            button.btn.btn-primary 
+             a(href=`${"dashboard/edit/"+val._id}`, style="color:white;") Edit
+         td 
+            button.btn.btn-danger 
+             a(href=`${"dashboard/delete/"+val._id}`, style="color:white;") Delete
+            
